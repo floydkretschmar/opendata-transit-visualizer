@@ -1,19 +1,19 @@
 package de.floydkretschmar.opendatatransitvisualizer.domain.stop
 
-import de.floydkretschmar.opendatatransitvisualizer.domain.VersionableEntity
+import de.floydkretschmar.opendatatransitvisualizer.domain.AutoIdEntity
 import de.floydkretschmar.opendatatransitvisualizer.domain.trip.segmentation.Segment
-import org.springframework.data.neo4j.core.schema.Id
 import org.springframework.data.neo4j.core.schema.Node
 import org.springframework.data.neo4j.core.schema.Relationship
+import java.util.*
 
 @Node
 class Stop private constructor(
-    @Id val id: String,
+    val stopIdentifier: String,
     val name: String?,
     val code: String?,
     @Relationship(type = "IS_LOCATED_AT", direction = Relationship.Direction.OUTGOING) var locationCoordinates: LocationCoordinates? = null,
     val locationType: LocationType?,
-    @Relationship(type = "HAS_PARENT", direction = Relationship.Direction.OUTGOING) val parent: Stop?) : VersionableEntity() {
+    @Relationship(type = "HAS_PARENT", direction = Relationship.Direction.OUTGOING) val parent: Stop?) : AutoIdEntity<UUID>() {
 
     data class Builder(
         var name: String? = null,
@@ -28,8 +28,8 @@ class Stop private constructor(
         fun locationCoordinates(locationCoordinates: LocationCoordinates?) = apply { this.locationCoordinates = locationCoordinates }
         fun locationType(locationType: LocationType?) = apply { this.locationType = locationType }
         fun parent(parent: Stop?) = apply { this.parent = parent }
-        fun build(id: String): Stop {
-            val stop = Stop(id, name, code, locationCoordinates, locationType, parent)
+        fun build(stopIdentifier: String): Stop {
+            val stop = Stop(stopIdentifier, name, code, locationCoordinates, locationType, parent)
             validate(stop)
             return stop
         }

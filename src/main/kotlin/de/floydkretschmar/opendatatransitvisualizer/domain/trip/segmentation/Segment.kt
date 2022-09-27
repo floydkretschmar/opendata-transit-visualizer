@@ -3,6 +3,7 @@ package de.floydkretschmar.opendatatransitvisualizer.domain.trip.segmentation
 import de.floydkretschmar.opendatatransitvisualizer.domain.AutoIdEntity
 import org.springframework.data.neo4j.core.schema.Node
 import org.springframework.data.neo4j.core.schema.Relationship
+import java.util.*
 
 @Node
 class Segment(
@@ -13,5 +14,5 @@ class Segment(
     val pickupType: PickupType?,
     val dropOffType: DropOffType?,
     var headSign: String?
-) : AutoIdEntity() {
+) : AutoIdEntity<UUID>() {
 }

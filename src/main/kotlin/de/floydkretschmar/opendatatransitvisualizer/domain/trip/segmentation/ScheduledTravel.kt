@@ -11,5 +11,5 @@ class ScheduledTravel(
     @TargetNode
     val stop: Stop,
     val time: LocalTime
-) : AutoIdEntity() {
+) : AutoIdEntity<Long>() {
 }
