@@ -4,5 +4,4 @@ import de.floydkretschmar.opendatatransitvisualizer.domain.trip.segmentation.Seg
 import org.springframework.data.neo4j.repository.Neo4jRepository
 import java.util.*
 
-interface SegmentRepository : Neo4jRepository<Segment, UUID> {
-}
+interface SegmentRepository : Neo4jRepository<Segment, UUID>

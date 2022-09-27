@@ -4,17 +4,15 @@ import de.floydkretschmar.opendatatransitvisualizer.domain.stop.LocationCoordina
 import de.floydkretschmar.opendatatransitvisualizer.domain.stop.LocationType
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
 import java.util.*
 
-@SpringBootTest
 class CreateStopRequestTests {
 
     @Test
     fun toCommand_whenCalled_returnCreateStopCommand() {
         val createStopRequest = CreateStopRequest("stopIdentifier", "name", "code", LocationCoordinates(1.0, 1.0), LocationType.STATION, UUID.randomUUID())
 
-        val command = createStopRequest.toCommand();
+        val command = createStopRequest.toCommand()
 
         assertThat(command.stopIdentifier).isEqualTo(createStopRequest.stopIdentifier)
         assertThat(command.name).isEqualTo(createStopRequest.name)

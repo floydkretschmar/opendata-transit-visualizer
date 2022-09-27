@@ -8,5 +8,4 @@ import java.util.*
 class LocationCoordinates(
     val longitude: Double,
     val latitude: Double
-) : AutoIdEntity<UUID>() {
-}
+) : AutoIdEntity<UUID>()

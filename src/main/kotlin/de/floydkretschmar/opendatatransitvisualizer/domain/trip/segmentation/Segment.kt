@@ -14,5 +14,4 @@ class Segment(
     val pickupType: PickupType?,
     val dropOffType: DropOffType?,
     var headSign: String?
-) : AutoIdEntity<UUID>() {
-}
+) : AutoIdEntity<UUID>()
