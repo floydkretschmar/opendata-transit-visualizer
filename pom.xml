@@ -57,6 +57,11 @@
             <artifactId>pipelinr</artifactId>
             <version>0.7</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.mvallim</groupId>
+            <artifactId>java-fluent-validator</artifactId>
+            <version>1.10.0</version>
+        </dependency>
     </dependencies>
 
     <build>
