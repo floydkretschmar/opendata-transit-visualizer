@@ -34,14 +34,14 @@ class Stop private constructor(
             return stop
         }
         private fun validate(stop: Stop) {
-            if (stop.locationType == LocationType.STOP || stop.locationType == LocationType.STATION || stop.locationType == LocationType.ENTRANCE_EXIT || stop.locationType == null) {
+            if (isMainLocationType(stop.locationType)) {
                 if (stop.name?.isEmpty() == true)
                     throw IllegalArgumentException("'name' has to be set for location type '$locationType'")
                 if (stop.locationCoordinates == null)
                     throw IllegalArgumentException("'coordinate' has to be set for location type '$locationType'")
             }
 
-            if (stop.locationType == LocationType.GENERIC_NODE || stop.locationType == LocationType.BOARDING_AREA || stop.locationType == LocationType.ENTRANCE_EXIT) {
+            if (isSubLocationType(stop.locationType)) {
                 if (stop.parent == null)
                     throw IllegalArgumentException("'parent' has to be set for location type '$locationType'")
             }
